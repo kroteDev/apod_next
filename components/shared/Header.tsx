@@ -15,10 +15,10 @@ const Header = () => {
         <div className="nav w-fit flex items-center">
           <ul className=' flex flex-wrap'>
             <li>
-              <a className='nav-item' href='https://nasa.gov/' rel="noreferrer">Nasa</a>          
+              <a className='nav-item' target="_blank" href='https://nasa.gov/' rel="noreferrer">Nasa</a>          
             </li>
             <li>
-              <a className='nav-item' href='https://apod.nasa.gov/apod' rel="noreferrer">APOD official site</a>          
+              <a className='nav-item' target="_blank" href='https://apod.nasa.gov/apod' rel="noreferrer">APOD official site</a>          
             </li>
             <li>
               <Link href="/about">

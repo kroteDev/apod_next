@@ -4,7 +4,7 @@ import { NextPage } from "next"
 
 const About: NextPage = () => {
   return (
-    <div className="container bg-white shadow-xl px-4 py-5 min-h-[60vh]">
+    <div className="container content-wrapper px-4 py-5">
       <h1 className="mb-8 font-bold text-4xl">ABOUT</h1>
       <p className="my-3 text-base">
         Hello Everyone , my name is Bruno(<a href="https://www.krotedev.com.br" target="_blank" rel="noreferrer" className="underline text-nasa-blue font-bold">kröteDev</a>), I'Am a developer who does design on free time and loves bacon 🥓. 
