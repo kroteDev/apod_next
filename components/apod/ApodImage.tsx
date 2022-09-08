@@ -8,10 +8,9 @@ export interface Params{
 const ApodImage = ({hdurl, title, date}: Params) => {
   return (
     <figure className='max-w-5xl mx-auto mb-14'>
-      <img src={hdurl} alt={title} />
-      {/* <Image src={hdurl} layout="responsive"  alt={title} width="100%" height="100%" />  */}
+      <img src={hdurl} alt={title} className='w-full h-auto'/>      
       <figcaption className='text-text-color italic text-right text-xs'>
-        {title} . Published: { new Date(date).toLocaleDateString() }
+        {title} . Published: { date.split('-').reverse().join('/') }
       </figcaption>
     </figure>
   )
