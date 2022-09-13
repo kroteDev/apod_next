@@ -1,72 +1,46 @@
-import type { NextPage } from 'next'
+import type { NextPage, GetServerSideProps } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import axios from 'axios'
+import ApodComponent from '../components/apod'
+import Apods from '../components/apod/Apods'
 
-const Home: NextPage = () => {
+const Home: NextPage = ({ apod, apods }: any) => {
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <title>APOD - Astronomy Picture of the day</title>
         <meta name="description" content="APOD - Astronomy Picture of the day" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.tsx</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
+      
+      <div className="container mx-auto">
+        <ApodComponent apod={apod} />
+        <header className='text-nasa-blue my-24 font-bold text-7xl'>
+          <h2>One of these days</h2>
+        </header>
+        <Apods apods={apods}/>
+      </div>
+      
     </div>
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async () => {  
+  //Get the APOD of the day
+  const req1 = await axios.get(`https://api.nasa.gov/planetary/apod?api_key=${process.env.NODE_ENV == 'production'? 'DEMO_KEY' : process.env.REACT_APP_APOD_KEY}&thumbs=true`)
+  const apod = req1.data
+  apod.apodDateId  = apod.date !== undefined ? apod.date.slice(2).replace(/-/g, "") : null  
+
+  //Get a list of 10 apods random
+  const req2 = await axios.get(`https://api.nasa.gov/planetary/apod?count=10&thumbs=true&api_key=${process.env.NODE_ENV !== 'production'? 'DEMO_KEY' : process.env.REACT_APP_APOD_KEY}`)
+  const apods = req2.data
+  return {
+    props: {
+     apod,
+     apods
+    },
+  }
 }
 
 export default Home
