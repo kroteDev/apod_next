@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="container">
         <div className="flex flex-wrap">
           <div className='w-1/3 px-3'>
-            <Image src={nasaworm} layout='intrinsic' width={288} height={80} />
+            <Image src={nasaworm} layout='intrinsic' width={288} height={80} alt='Nasa Worm Logo' />
           </div>
           <div className='w-1/3 px-3'>
             <h2 className='font-bold text-lg mb-5'>Follow me</h2>

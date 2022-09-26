@@ -27,13 +27,13 @@ const Home: NextPage = ({ apod, apods }: any) => {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {  
-  //Get the APOD of the day
-  const req1 = await axios.get(`https://api.nasa.gov/planetary/apod?api_key=${process.env.NODE_ENV == 'production'? 'DEMO_KEY' : process.env.REACT_APP_APOD_KEY}&thumbs=true`)
+  //Get the APOD of the day  
+  const req1 = await axios.get(`https://api.nasa.gov/planetary/apod?api_key=${process.env.NODE_ENV !== 'production' ? 'DEMO_KEY' : process.env.API_KEY}&thumbs=true`)
   const apod = req1.data
   apod.apodDateId  = apod.date !== undefined ? apod.date.slice(2).replace(/-/g, "") : null  
 
   //Get a list of 10 apods random
-  const req2 = await axios.get(`https://api.nasa.gov/planetary/apod?count=10&thumbs=true&api_key=${process.env.NODE_ENV !== 'production'? 'DEMO_KEY' : process.env.REACT_APP_APOD_KEY}`)
+  const req2 = await axios.get(`https://api.nasa.gov/planetary/apod?count=10&thumbs=true&api_key=${process.env.NODE_ENV !== 'production'? 'DEMO_KEY' : process.env.API_KEY}`)
   const apods = req2.data
   return {
     props: {

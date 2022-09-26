@@ -8,7 +8,7 @@ const Header = () => {
         <div className="logo">
           <h1>
             <Link href="/">              
-              <a className='inline-block'><Image src={apodlogo} layout="intrinsic" width="150" height="83" /></a>
+              <a className='inline-block'><Image src={apodlogo} layout="intrinsic" width="150" height="83" alt="welcome to kroteDev - APOD" /></a>
             </Link>
           </h1>
         </div>
