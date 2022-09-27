@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 export interface Params{
-  hdurl: string,
+  hdurl?: string,
   title: string,
   date: string
 }

@@ -1,16 +1,6 @@
 import Link from "next/link"
+import { Apod } from "@types"
 
-export interface Apod {
-  copyright?: string,
-  date: string,
-  explanation: string,
-  hdurl: string,
-  media_type: string,
-  service_version?: string,
-  title: string,
-  url: string,
-  thumbnail_url: string,  
-}
 export interface IParams{
   apod: Apod  
   index: number
