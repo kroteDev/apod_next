@@ -18,7 +18,7 @@ export interface Apod {
   apodDateId: string
 }
 
-const ApodComponent = ({apod}: Props) => {  
+const ApodComponent = ({apod}: Props): JSX.Element => {
   return (
     <div className='container content-wrapper py-14 px-4'>
       {apod.media_type === "image" ?(

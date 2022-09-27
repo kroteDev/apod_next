@@ -12,11 +12,11 @@ export interface Apod {
   url: string,
   thumbnail_url: string  
 }
-export interface IParams{
+export interface Props{
   apods: Apod[]  
 }
 
-const Apods = ({apods}: IParams) => {
+const Apods = ({apods}: Props): JSX.Element => {
   return (
     <div>
       {apods.map( (apod, index) => (
