@@ -37,7 +37,7 @@ const Home: NextPage<Props> = ({apod, apods}: Props) => {
 
 export const getServerSideProps: GetServerSideProps = async () => {
   //one apod
-  const request = await axios.get(`https://api.nasa.gov/planetary/apod?api_key=${process.env.NODE_ENV !== 'production'? 'DEMO_KEY' : process.env.REACT_APP_APOD_KEY}&thumbs=true`)
+  const request = await axios.get(`https://api.nasa.gov/planetary/apod?api_key=${process.env.NODE_ENV !== 'production'? 'DEMO_KEY' : process.env.API_KEY}&thumbs=true`)
   const apod = request.data
   apod.apodDateId  = apod.date !== undefined ? apod.date.slice(2).replace(/-/g, "") : null
   

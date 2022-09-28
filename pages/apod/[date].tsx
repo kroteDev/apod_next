@@ -4,7 +4,6 @@ import axios from 'axios'
 import  ApodComponent  from '../../components/apod/'
 import Head from 'next/head'
 import { Apod } from '@types'
-import { useRouter } from 'next/router'
 
 interface IParams extends ParsedUrlQuery {
   date: string
@@ -14,13 +13,13 @@ export interface Props{
 }
 
 const apod: NextPage<Props> = ({apod}: Props) => {
-  const router = useRouter()
+  
   return (
     <>
       <Head>
         <title>APOD - Astronomy Picture of the day.{apod.title}</title>
         <meta name="description"          content={apod.explanation} />
-        <meta property="og:url"           content={router.pathname} />
+        <meta property="og:url"           content={`/apod/${apod.date}`} />
         <meta property="og:type"          content="website" />
         <meta property="og:title"         content={`APOD - Astronomy Picture of the day.${apod.title}`} />
         <meta property="og:description"   content={apod.explanation} />
@@ -46,7 +45,7 @@ export const getServerSideProps: GetServerSideProps = async ({...ctx}) => {
     }
   }
   
-  const request = await axios.get(`https://api.nasa.gov/planetary/apod?api_key=${process.env.NODE_ENV !== 'production'? 'DEMO_KEY' : process.env.REACT_APP_APOD_KEY}&date=${date}&thumbs=true`)
+  const request = await axios.get(`https://api.nasa.gov/planetary/apod?api_key=${process.env.NODE_ENV !== 'production'? 'DEMO_KEY' : process.env.API_KEY}&date=${date}&thumbs=true`)
   const apod = request.data
   apod.apodDateId  = apod.date !== undefined ? apod.date.slice(2).replace(/-/g, "") : null  
 
