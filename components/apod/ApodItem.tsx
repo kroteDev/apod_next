@@ -26,7 +26,7 @@ const ApodItem = ({apod, index}: IParams) => {
         </p>
 				<div className="text-text-color flex">
 					<p className="italic mb-4 mr-4">
-            <label className="font-bold text-nasa-blue mr-1 not-italic">Date: </label>{ new Date(apod.date).toLocaleDateString() }
+            <label className="font-bold text-nasa-blue mr-1 not-italic">Date: </label>{ apod.date.split('-').reverse().join('/')}
           </p>
 					<p className="italic mb-4 mr-4">
             <label className="font-bold text-nasa-blue mr-1 not-italic">Media Type: </label>{apod.media_type}

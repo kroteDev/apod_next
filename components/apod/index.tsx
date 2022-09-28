@@ -8,6 +8,11 @@ export interface Props{
 
 
 const ApodComponent = ({apod}: Props): JSX.Element => {
+  if (!apod){
+    return(      
+      <h1 className='text-2xl text-green-500 font-bold'>Carregando...</h1>      
+    )
+  }
   return (
     <div className='container content-wrapper py-14 px-4'>
       {apod.media_type === "image" ?(
