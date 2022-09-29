@@ -13,11 +13,11 @@ export interface Props{
 }
 
 const apod: NextPage<Props> = ({apod}: Props) => {
-  
+  const pageTitle = `APOD - Astronomy Picture of the day.${apod.title}`  
   return (
     <>
       <Head>
-        <title>APOD - Astronomy Picture of the day.{apod.title}</title>
+        <title>{pageTitle}</title>
         <meta name="description"          content={apod.explanation} />
         <meta property="og:url"           content={`/apod/${apod.date}`} />
         <meta property="og:type"          content="website" />

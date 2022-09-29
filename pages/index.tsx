@@ -14,10 +14,11 @@ export interface Props{
 
 const Home: NextPage<Props> = ({apod, apods}: Props) => {  
   const router = useRouter()  
+  const pageTitle = `APOD - Astronomy Picture of the day.${apod.title}`
   return (
     <div>
       <Head>
-        <title>APOD - Astronomy Picture of the day.{apod.title}</title>
+        <title>{pageTitle}</title>
         <meta name="description"          content={`Today: ${apod.explanation}`} />
         <meta property="og:url"           content={router.pathname} />
         <meta property="og:type"          content="website" />

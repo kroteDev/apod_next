@@ -1,13 +1,11 @@
-import Link from 'next/link'
-import Image from 'next/image'
-import nasaworm from '../../public/imgs/nasaworm.png'
+
 const Footer = () => {
   return (
     <footer className='flex flex-wrap bg-gradient-to-b from-gradient-start to-gradient-end pt-8 pb-5 mt-28 text-white'>
       <div className="container">
         <div className="flex flex-wrap">
           <div className='w-1/3 px-3'>
-            <Image src={nasaworm} layout='intrinsic' width={288} height={80} alt='Nasa Worm Logo' />
+            <img src="/imgs/nasaworm.png" alt="Nasa Worm Logo" width={288} height={80}/>
           </div>
           <div className='w-1/3 px-3'>
             <h2 className='font-bold text-lg mb-5'>Follow me</h2>

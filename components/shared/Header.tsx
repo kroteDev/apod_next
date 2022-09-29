@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import apodlogo from '../../public/imgs/apodlogo.png'
+
 const Header = () => {
   return (
     <header className=' bg-nasa-blue text-white mb-28 shadow-md px-3 py-2 border-b-4 border-border-nav'>
@@ -8,7 +8,7 @@ const Header = () => {
         <div className="logo">
           <h1>
             <Link href="/">              
-              <a className='inline-block'><Image src={apodlogo} layout="intrinsic" width="150" height="83" alt="welcome to kroteDev - APOD" /></a>
+              <a className='inline-block'><img src="/imgs/apodlogo.png" alt="kroteDev Apod" width={150} height={83} /></a>
             </Link>
           </h1>
         </div>
